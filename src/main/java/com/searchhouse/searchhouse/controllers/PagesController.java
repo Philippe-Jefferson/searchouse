@@ -62,11 +62,11 @@ public class PagesController {
     public String getLoginPage() {
         return "login";
     }
-
     @GetMapping("/logement")
     public String getLogementPage() {
         return "logement";
     }
+
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model, String error, String success){
@@ -150,7 +150,7 @@ public class PagesController {
         return modelAndView;
     }
 
-   @RequestMapping(value = "/index", method = RequestMethod.GET)
+   @RequestMapping(value = "rechercheSimple", method = RequestMethod.GET)
     public String rechercheSimple(Model model, String error,
                                   @RequestParam
                                           String motcle,RedirectAttributes redirectAttributes) {
@@ -163,12 +163,13 @@ public class PagesController {
                return "redirect:/index";
            } else {
                List<Logement> listLogement = logementRepository.findLogementsByCarectiristique(motcle);
-               model.addAttribute("listLogement", listLogement);
+               model.addAttribute("logements", listLogement);
+               System.out.println(listLogement);
                return "redirect:/logement";
            }
        }
 
-    @RequestMapping(value = "/logement", method = RequestMethod.GET)
+    @RequestMapping(value = "rechercheAvance", method = RequestMethod.GET)
     public String rechercheAvance(Model model,
                                   @RequestParam String type,String ville,String quartier,String piece,Double prix1 ,Double prix2 ,RedirectAttributes redirectAttributes) {
 
@@ -182,6 +183,7 @@ public class PagesController {
             List<Logement> listLogement = logementRepository.rechercheavance(type,ville,quartier,piece,prix1,prix2);
             model.addAttribute("listLogement", listLogement);
             return "redirect:/logement";
+
         }
     }
 }
