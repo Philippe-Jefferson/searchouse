@@ -25,6 +25,7 @@
         </div>
     </div>
 
+    <form th:action="@{/rechercheAvance}" method="get" enctype="multipart/form-data">
     <div class="rle_searchform_wrapper2 rle_toppadder100 rle_bottompadder70">
         <div class="container">
             <div class="row">
@@ -32,30 +33,31 @@
                     <div class="rle_searchform_tabs style_3">
                         <div class="row">
                             <div class="rle_searchform_box style_3">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                 <select name="type">
-                                    <option value="1">Appartement</option>
-                                    <option value="2">Cité universitaire</option>
+                                    <option value="Appartement">Appartement</option>
+                                    <option value="Cite">Cité universitaire</option>
                                 </select>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                <input type="text" name ="ville" id="ville"placeholder="Saisissez le nom de la ville">
+                                <input type="serch" name ="ville" id="ville"placeholder="Saisissez le nom de la ville">
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                <input type="text" name="quartier" id="quartier" placeholder="Saisissez le nom du quartier">
+                                <input type="serch" name="quartier" id="quartier" placeholder="Saisissez le nom du quartier">
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                <input type="text" name="piece" id="piece" placeholder="Saisissez le nom de pièce">
+                                <input type="serch" name="piece" id="piece" placeholder="Saisissez le nom de pièce">
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                                <input type="text" name="prix1" id="prix-min" placeholder="Prix minimal">
+                                <input type="serch" name="prix1" id="prix-min" placeholder="Prix minimal">
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                                <input type="text" name="prix2" id="prix_max" placeholder="Prix maximum">
+                                <input type="serch" name="prix2" id="prix_max" placeholder="Prix maximum">
                             </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                    <label for="amount">Price</label>
+
                                     <!--<div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 15%; width: 45%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 15%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 60%;"></span></div>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -63,7 +65,9 @@
                                     <div id="slider-area" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 15%; width: 45%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 15%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 60%;"></span></div>
                                 </div>-->
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                    <button class="rle_btn"><i class="fa fa-search" aria-hidden="true"></i> search</button>
+                                    <div class="col-lg-12">
+                                        <input type="submit" class="rle_btn" value="Search">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -72,6 +76,8 @@
             </div>
         </div>
     </div>
+    </div>
+    </form>
 
     <div class="rle_property_wrapper rle_toppadder100 rle_bottompadder70">
         <div class="container">
@@ -268,6 +274,6 @@
     </div>
 
 </div>
-
+</div>
 </body>
 </html>

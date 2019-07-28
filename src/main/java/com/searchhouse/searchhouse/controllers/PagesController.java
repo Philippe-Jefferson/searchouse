@@ -62,8 +62,16 @@ public class PagesController {
     public String getLoginPage() {
         return "login";
     }
+
     @GetMapping("/logement")
-    public String getLogementPage() {
+    public String getLogementPage(Model model, @ModelAttribute("logements") List<Logement> logements) {
+        if (logements != null){
+            model.addAttribute("logements",logements);
+        }else{
+            logements = logementRepository.findAll();
+            model.addAttribute("logements",logements);
+        }
+
         return "logement";
     }
 
@@ -163,7 +171,7 @@ public class PagesController {
                return "redirect:/index";
            } else {
                List<Logement> listLogement = logementRepository.findLogementsByCarectiristique(motcle);
-               model.addAttribute("logements", listLogement);
+               redirectAttributes.addAttribute("logements", listLogement);
                System.out.println(listLogement);
                return "redirect:/logement";
            }
@@ -178,11 +186,12 @@ public class PagesController {
             String errorMessage = "";
             errorMessage = "Veuillez remplir tos les champs.";
             redirectAttributes.addFlashAttribute("error", errorMessage);
-            return "redirect:/index";
+            return "logement";
         } else {
             List<Logement> listLogement = logementRepository.rechercheavance(type,ville,quartier,piece,prix1,prix2);
             model.addAttribute("listLogement", listLogement);
-            return "redirect:/logement";
+            System.out.println(listLogement);
+            return "logement";
 
         }
     }
