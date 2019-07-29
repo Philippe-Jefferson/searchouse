@@ -77,7 +77,7 @@ public class PagesController {
             model.addAttribute("logements", logements);
             return "logement";
         }else{
-            if (typ_recherche.equalsIgnoreCase("recherche_simple") && motcle != null) {
+            if (typ_recherche.equalsIgnoreCase("recherche_simple")) {
 
                 logements = logementRepository.findLogementsByCarectiristique(motcle);
                 model.addAttribute("logements", logements);
@@ -85,7 +85,7 @@ public class PagesController {
                 return "logement";
             }
 
-            if (typ_recherche.equalsIgnoreCase("recherche_avance") && type == null || ville == null || quartier == null || piece == null || prix1 == null || prix2 == null) {
+            if (typ_recherche.equalsIgnoreCase("recherche_avance")) {
 
                 logements = logementRepository.rechercheavance(type, ville, quartier, piece, prix1, prix2);
                 model.addAttribute("logements", logements);
