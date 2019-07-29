@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <form th:action="@{/rechercheAvance}" method="get" enctype="multipart/form-data">
+    <form th:action="@{/logement}" method="get" enctype="multipart/form-data">
     <div class="rle_searchform_wrapper2 rle_toppadder100 rle_bottompadder70">
         <div class="container">
             <div class="row">
@@ -34,28 +34,32 @@
                         <div class="row">
                             <div class="rle_searchform_box style_3">
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                <select name="type">
+                                <select name="type" required>
                                     <option value="Appartement">Appartement</option>
                                     <option value="Cite">Cité universitaire</option>
                                 </select>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                <input type="serch" name ="ville" id="ville"placeholder="Saisissez le nom de la ville">
+                                <input type="serch" name ="ville" id="ville"placeholder="Saisissez le nom de la ville" required>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                <input type="serch" name="quartier" id="quartier" placeholder="Saisissez le nom du quartier">
+                                <input type="serch" name="quartier" id="quartier" placeholder="Saisissez le nom du quartier" required>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                <input type="serch" name="piece" id="piece" placeholder="Saisissez le nom de pièce">
+                                <input type="serch" name="piece" id="piece" placeholder="Saisissez le nom de pièce" required>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                                <input type="serch" name="prix1" id="prix-min" placeholder="Prix minimal">
+                                <input type="serch" name="prix1" id="prix-min" placeholder="Prix minimal" required>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                                <input type="serch" name="prix2" id="prix_max" placeholder="Prix maximum">
+                                <input type="serch" name="prix2" id="prix_max" placeholder="Prix maximum" required>
                             </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="hidden" name="type_de_recherche" id="typ_recherche" placeholder="recherche_avance">
+                                </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 
                                     <!--<div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 15%; width: 45%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 15%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 60%;"></span></div>

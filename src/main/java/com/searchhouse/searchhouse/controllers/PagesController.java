@@ -46,6 +46,7 @@ public class PagesController {
             model.addAttribute("logements", logements);
         return "index";
 
+
     }
 
     @GetMapping("/about")
@@ -64,17 +65,39 @@ public class PagesController {
     }
 
     @GetMapping("/logement")
-    public String getLogementPage(Model model, @ModelAttribute("logements") List<Logement> logements) {
-        if (logements != null){
-            model.addAttribute("logements",logements);
-        }else{
-            logements = logementRepository.findAll();
-            model.addAttribute("logements",logements);
-        }
+    public String getLogementPage(Model model,
+                                         @RequestParam
+                                                    String typ_recherche, String motcle,RedirectAttributes redirectAttributes,
+                                  String type,String ville,String quartier,String piece,Double prix1 ,Double prix2) {
 
+        List<Logement> logements = null;
+        if (typ_recherche == null) {
+
+            logements = logementRepository.findAll();
+            model.addAttribute("logements", logements);
+            return "logement";
+        }else{
+            if (typ_recherche.equalsIgnoreCase("recherche_simple") && motcle != null) {
+
+                logements = logementRepository.findLogementsByCarectiristique(motcle);
+                model.addAttribute("logements", logements);
+                System.out.println(logements);
+                return "logement";
+            }
+
+            if (typ_recherche.equalsIgnoreCase("recherche_avance") && type == null || ville == null || quartier == null || piece == null || prix1 == null || prix2 == null) {
+
+                logements = logementRepository.rechercheavance(type, ville, quartier, piece, prix1, prix2);
+                model.addAttribute("logements", logements);
+                System.out.println(logements);
+                return "logement";
+
+            }
+
+
+        }
         return "logement";
     }
-
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model, String error, String success){
@@ -158,7 +181,7 @@ public class PagesController {
         return modelAndView;
     }
 
-   @RequestMapping(value = "rechercheSimple", method = RequestMethod.GET)
+   /*@RequestMapping(value = "rechercheSimple", method = RequestMethod.GET)
     public String rechercheSimple(Model model, String error,
                                   @RequestParam
                                           String motcle,RedirectAttributes redirectAttributes) {
@@ -175,9 +198,9 @@ public class PagesController {
                System.out.println(listLogement);
                return "redirect:/logement";
            }
-       }
+       }*/
 
-    @RequestMapping(value = "rechercheAvance", method = RequestMethod.GET)
+    /*@RequestMapping(value = "rechercheAvance", method = RequestMethod.GET)
     public String rechercheAvance(Model model,
                                   @RequestParam String type,String ville,String quartier,String piece,Double prix1 ,Double prix2 ,RedirectAttributes redirectAttributes) {
 
@@ -194,8 +217,9 @@ public class PagesController {
             return "logement";
 
         }
-    }
+    }*/
 }
+
 
     // ACTIVATE AGENT HERE
 

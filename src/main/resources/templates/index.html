@@ -23,11 +23,14 @@
 
                             <div role="tabpanel" class="tab-pane fade in active" id="rent">
                                     <div class="row">
-                                        <form th:action="@{/rechercheSimple}" method="get" enctype="multipart/form-data">
+                                        <form th:action="@{/logement}" method="get" enctype="multipart/form-data">
                                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                         <div class="rle_searchform_box">
                                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                                <input type="text" name="motcle" placeholder="Saisissez votre mot clé(ville,quartier, prix...)">
+                                                <input type="text" name="motcle" placeholder="Saisissez votre mot clé(ville,quartier, prix...)" required>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="hidden" name="typ_recherche" id="typ_recherche" placeholder="recherche_simple">
                                             </div>
                                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                                         <div class="col-lg-12">
